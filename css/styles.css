@@ -6,8 +6,8 @@
   --font-serif: 'Montserrat', serif;
 
   /* BRAND GOLD */
-  --gold: #d4af37;
-  --gold-soft: #f1d26b;
+  --gold: linear-gradient(135deg, #9f7400, #d4af37,#f1d26b, #9f7400);
+  --gold-soft: #9f7400;
 
   /* CORE BRAND COLORS (CRIMSON SYSTEM) */
   --crimson-dark: #3b0919;
@@ -25,7 +25,7 @@
   --text-muted: #7a757e;
 
   /* LIGHT MODE SUPPORT (clean neutral backgrounds) */
-  --bg-light: #f6f7f9;
+  --bg-light: #e2d9d9;
   --bg-lighter: #ffffff;
   --bg-soft: #eef1f4;
   --bg-muted: #e9edf2;
@@ -683,7 +683,75 @@ nav.nav-scrolled .nav-links a:hover {
   }
 }
 
-/* SECTION BACKGROUNDS */
+/* ORGANIZER SECTION */
+
+.organizer-section{
+  padding: 90px 0;
+  background: var(--bg-light);
+}
+
+.organizer-card{
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 50px;
+  align-items: center;
+  
+  padding: 50px;
+  border-radius: 28px;
+
+  background: var(--bg-muted);
+  border: 1px solid var(--crimson-dark);
+
+  backdrop-filter: blur(12px);
+}
+
+.organizer-logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.organizer-logo img{
+  width: 100%;
+  max-width: 220px;
+  object-fit: contain;
+}
+
+.organizer-content .event-tag {
+  background: var(--crimson-deep);
+  color: #fff;
+}
+
+.organizer-content h2{
+  color: var(--crimson-deep);
+  font-size: 2.3rem;
+  margin: 18px 0;
+} 
+
+.organizer-content p{
+  /* font-weight: 400; */
+  color: var(--text-soft);
+  line-height: 1.8;
+  margin-bottom: 18px;
+  opacity: 0.9;
+}
+
+@media(max-width: 768px){
+
+  .organizer-card{
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 35px 24px;
+    gap: 30px;
+  }
+
+  /* .organizer-content h2{
+    font-size: 1.8rem;
+  } */
+
+}
+
+/* EVENTS SECTION */
 
 .events {
   background: var(--bg-muted);
@@ -1323,6 +1391,7 @@ nav.nav-scrolled .nav-links a:hover {
   color:#fff;
 }
 
+
 .countdown p{
   text-align:center;
   color:rgba(255,255,255,0.72);
@@ -1392,7 +1461,7 @@ nav.nav-scrolled .nav-links a:hover {
   font-size:clamp(2.6rem,5vw,4rem);
   line-height:1;
 
-  color:var(--gold);
+  color:var(--gold-soft);
 
   font-weight:700;
 
