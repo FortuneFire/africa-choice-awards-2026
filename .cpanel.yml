@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/mminatshipi/public_html/aca.mminatshipi.com/
+    - /bin/cp -R * $DEPLOYPATH
