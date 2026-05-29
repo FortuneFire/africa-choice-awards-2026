@@ -1,145 +1,115 @@
-
 /* =========================
-   MULTI STEP FORM
+   DOM READY WRAPPER (IMPORTANT)
 ========================= */
 
-const step1 = document.getElementById("step-1");
-const step2 = document.getElementById("step-2");
+document.addEventListener("DOMContentLoaded", () => {
 
-/* NEXT STEP */
-function nextStep() {
+  /* =========================
+     ELEMENTS
+  ========================= */
 
-  const firstName = document.querySelector(
-    'input[name="first_name"]'
-  ).value.trim();
+  const form = document.getElementById("eventForm");
+  const step1 = document.getElementById("step-1");
+  const step2 = document.getElementById("step-2");
 
-  const lastName = document.querySelector(
-    'input[name="last_name"]'
-  ).value.trim();
+  const submitButton = form.querySelector('button[type="submit"]');
 
-  const email = document.querySelector(
-    'input[name="email"]'
-  ).value.trim();
+  const ZAPIER_WEBHOOK =
+    "https://hooks.zapier.com/hooks/catch/23918850/4b3mg3w/";
 
-  const phone = document.querySelector(
-    'input[name="phone"]'
-  ).value.trim();
-
-  // validation
-  if (!firstName || !lastName || !email || !phone) {
-
-    alert("Please complete all required fields.");
-
+  if (!form) {
+    console.error("Form not found");
     return;
-
   }
 
-  // switch steps
-  step1.classList.remove("active");
+  /* =========================
+     MULTI STEP FORM
+  ========================= */
 
-  step2.classList.add("active");
+  function nextStep() {
 
-  // smooth scroll
-  step2.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
+    const firstName = document.querySelector('input[name="first_name"]').value.trim();
+    const lastName  = document.querySelector('input[name="last_name"]').value.trim();
+    const email     = document.querySelector('input[name="email"]').value.trim();
+    const phone     = document.querySelector('input[name="phone"]').value.trim();
 
-}
-window.nextStep = nextStep;
+    if (!firstName || !lastName || !email || !phone) {
+      alert("Please complete all required fields.");
+      return;
+    }
 
-/* =========================
-   FORM SUBMISSION
-========================= */
+    step1.classList.remove("active");
+    step2.classList.add("active");
 
-const form = document.getElementById("eventForm");
-
-const submitButton = form.querySelector(
-  'button[type="submit"]'
-);
-
-form.addEventListener("submit", async function (e) {
-
-  e.preventDefault();
-
-  // Ensure Step 2 is active
-  if (!step2.classList.contains("active")) {
-
-    nextStep();
-
-    return;
-
-  }
-
-  // prevent double submit
-  submitButton.disabled = true;
-
-  submitButton.innerHTML = "Submitting...";
-
-  try {
-
-    const formData = new FormData(form);
-
-    const response = await fetch("submit.php", {
-      method: "POST",
-      body: formData
+    step2.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
     });
+  }
 
-    const result = await response.json();
+  window.nextStep = nextStep;
 
-    if (result.status === "success") {
+  /* =========================
+     FORM SUBMISSION (ZAPIER)
+  ========================= */
 
-      submitButton.innerHTML =
-        "Registration Submitted ✓";
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-      submitButton.style.background =
-        "#2ecc71";
+    // ensure step 2 is active
+    if (!step2.classList.contains("active")) {
+      nextStep();
+      return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.innerHTML = "Submitting...";
+
+    try {
+
+      const formData = new FormData(form);
+
+      const params = new URLSearchParams();
+
+      for (const [key, value] of formData.entries()) {
+        params.append(key, value);
+      }
+
+      const url = ZAPIER_WEBHOOK + "?" + params.toString();
+
+      // IMPORTANT: Zapier + browser safe mode
+      await fetch(url, {
+        method: "GET",
+        mode: "no-cors"
+      });
+
+      submitButton.innerHTML = "Registration Submitted ✓";
+      submitButton.style.background = "#2ecc71";
+
+      form.reset();
 
       setTimeout(() => {
 
-        form.reset();
-
         submitButton.disabled = false;
-
-        submitButton.innerHTML =
-          "Complete Registration";
-
+        submitButton.innerHTML = "Complete Registration";
         submitButton.style.background = "";
 
         step2.classList.remove("active");
-
         step1.classList.add("active");
 
-      }, 3000);
+      }, 2500);
 
-    } else {
+    } catch (err) {
+
+      console.error(err);
 
       submitButton.disabled = false;
+      submitButton.innerHTML = "Complete Registration";
 
-      submitButton.innerHTML =
-        "Complete Registration";
-
-      alert(
-        result.message ||
-        "Submission failed."
-      );
+      alert("Something went wrong. Try again.");
 
     }
 
-  } catch (error) {
-
-    console.error(error);
-
-    submitButton.disabled = false;
-
-    submitButton.innerHTML =
-      "Complete Registration";
-
-    alert(
-      "Something went wrong. Please try again."
-    );
-
-  }
+  });
 
 });
-
