@@ -125,26 +125,76 @@ section {
   font-size: 1.05rem;
 }
 
+/* TOP BAR */
+
+.top-bar {
+  background: #e9edf2;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 8px 0;
+}
+
+.top-bar-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.top-bar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-bar-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.top-bar-img:hover {
+  opacity: 1;
+}
+
+.top-bar-divider {
+  width: 1px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
 /* NAV */
 
 nav {
-  position: fixed;
+  position: sticky;
   width: 100%;
   top: 0;
   z-index: 1000;
-  background: var(--surface-glass);
+  background: rgba(59, 9, 25, 0.571);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   color: var(--text);
 }
 
 nav.nav-scrolled {
+  background: rgba(59, 9, 25, 0.98);
   border-bottom: 1px solid var(--crimson-dark);
+}
+
+nav .nav-links a,
+nav .logo {
+  color: var(--text);
+  font-weight: 500;
+}
+
+nav .nav-links a:hover {
+  color: var(--gold-soft);
 }
 
 nav.nav-scrolled .nav-links a,
 nav.nav-scrolled .logo {
-  color: var(--black);
+  color: var(--text);
   font-weight: 600;
 }
 
@@ -157,6 +207,18 @@ nav.nav-scrolled .nav-links a:hover {
   justify-content: space-between;
   align-items: center;
   padding: 12px 0;
+}
+
+.nav-wrapper .nav-links {
+  order: 1;
+}
+
+.nav-wrapper .mobile-menu-btn {
+  order: 2;
+}
+
+.nav-wrapper .nav-btn {
+  order: 3;
 }
 
 /* .logo {
@@ -273,7 +335,7 @@ nav.nav-scrolled .nav-links a:hover {
 /* Overlay - positioned below nav with dark backdrop */
 .mobile-nav-overlay {
   position: fixed;
-  top: 76px;
+  top: 132px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -1882,5 +1944,48 @@ footer {
 
   .count-box h3 {
     font-size: 1.7rem;
+  }
+}
+
+/* TOP BAR RESPONSIVE */
+@media (max-width: 992px) {
+  .top-bar-img {
+    height: 35px;
+  }
+
+  .top-bar-divider {
+    height: 25px;
+  }
+
+  .top-bar-wrapper {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .top-bar {
+    padding: 6px 0;
+  }
+
+  .top-bar-img {
+    height: 28px;
+  }
+
+  .top-bar-divider {
+    height: 20px;
+  }
+
+  .top-bar-wrapper {
+    gap: 16px;
+  }
+
+  /* Adjust nav position for mobile */
+  nav {
+    top: 40px;
+  }
+
+  /* Adjust mobile nav overlay position */
+  .mobile-nav-overlay {
+    top: 96px;
   }
 }

@@ -98,14 +98,30 @@
 
 <body>
 
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container top-bar-wrapper">
+      <div class="top-bar-logo">
+        <img src="assets/logo/Africa-Choice-Awards-Logo.png" alt="Africa Choice Awards" class="top-bar-img">
+      </div>
+      <div class="top-bar-divider"></div>
+      <div class="top-bar-logo">
+        <img src="assets/logo/Mminatsipi Round logo.png" alt="Mmina Tshipi" class="top-bar-img">
+      </div>
+    </div>
+  </div>
+
   <!-- NAV -->
 
   <nav>
 
     <div class="container nav-wrapper">
 
-      <div class="logo">
-        <a href="/"><img src="assets/logo/Africa-Choice-Awards-Logo.png" alt="AFRICA CHOICE AWARDS" class="logo-img"></a>
+      <div class="nav-links">
+        <a href="#events">Events</a>
+        <a href="#about">About</a>
+        <a href="#categories">Categories</a>
+        <a href="#register">Register</a>
       </div>
 
       <button
@@ -118,14 +134,6 @@
         <i class="fa-solid fa-bars menu-icon-open"></i>
         <i class="fa-solid fa-xmark menu-icon-close"></i>
       </button>
-
-      <div class="nav-links">
-        <a href="#events">Events</a>
-        <a href="#categories">Categories</a>
-        <a href="#about">About</a>
-        <a href="#register">Register</a>
-       
-      </div>
 
       <a href="#register" class="nav-btn">
         VIP Access
@@ -215,11 +223,11 @@
             <div class="slide-details">
               <div class="detail-item">
                 <i class="fa-solid fa-star"></i>
-                <span>Heritage Month Celebration</span>
+                <span>Sun Bet Arena</span>
               </div>
               <div class="detail-item">
                 <i class="fa-solid fa-calendar"></i>
-                <span>September 2026</span>
+                <span>Saturday, 26 September 2026</span>
               </div>
               <div class="detail-item">
                 <i class="fa-solid fa-flag"></i>
@@ -300,12 +308,10 @@
 
       <div class="section-title">
 
-        <h2>Two Landmark Events</h2>
+        <h2>Main Event & Info Pack</h2>
 
         <p>
-          From media launch to the main ceremony,
-          Africa Choice Awards 2026 is a celebration
-          of continental excellence.
+          The main event is now the focus, with an info pack section for announcements, access details, and event updates.
         </p>
 
       </div>
@@ -314,81 +320,25 @@
 
       <div class="event-tabs">
 
-        <button class="tab-btn active" data-tab="launch">
-          Media Launch & Nominees
+        <button class="tab-btn active" type="button" data-tab="main-event" aria-selected="true">
+          Main Event
         </button>
 
-        <button class="tab-btn" data-tab="awards">
-          Main Awards Ceremony
+        <button class="tab-btn" type="button" data-tab="info-pack" aria-selected="false">
+          Info Pack Download
         </button>
 
       </div>
 
       <!-- TAB 1 -->
 
-      <div class="event-content active" id="launch">
+      <div class="event-content active" id="main-event">
 
         <div class="event-card">
 
           <div class="event-image">
 
-            <img src="assets/winner on stage.JPG" alt="Media Launch">
-
-          </div>
-
-          <div class="event-info">
-
-            <span class="event-tag">
-              Media Launch & Nominee Announcement
-            </span>
-
-            <h3>
-              The Official ACA 2026 Media Launch
-            </h3>
-
-            <div class="event-meta">
-
-              <div class="meta-box">
-                <small>Date</small>
-                <strong>29 May 2026</strong>
-              </div>
-
-              <div class="meta-box">
-                <small>Venue</small>
-                <strong>Sandton Convention Centre</strong>
-              </div>
-
-              <div class="meta-box">
-                <small>Location</small>
-                <strong>Johannesburg</strong>
-              </div>
-
-            </div>
-
-            <p class="event-description">
-              The official media launch and nominee announcement
-              for Africa Choice Awards 2026.
-            </p>
-
-            <a href="#register" class="btn btn-primary">
-              Register For Media Access
-            </a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- TAB 2 -->
-
-      <div class="event-content" id="awards">
-
-        <div class="event-card">
-
-          <div class="event-image">
-
-            <img src="assets/ACA winner.JPG" alt="Awards Ceremony">
+            <img src="assets/ACA winner.JPG" alt="Main Awards Ceremony">
 
           </div>
 
@@ -406,7 +356,7 @@
 
               <div class="meta-box">
                 <small>Date</small>
-                <strong>September 2026</strong>
+                <strong>Saturday, 26 September 2026</strong>
               </div>
 
               <div class="meta-box">
@@ -416,19 +366,72 @@
 
               <div class="meta-box">
                 <small>Venue</small>
-                <strong>Premium Venue</strong>
+                <strong>Sun Bet Arena</strong>
               </div>
 
             </div>
 
             <p class="event-description">
-              A world-class awards ceremony celebrating African
-              excellence across film, television, music,
-              fashion, and innovation.
+              The main event will celebrate African excellence in film, television, music, fashion, and innovation.
             </p>
 
             <a href="#register" class="btn btn-primary">
               Get VIP Access
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- TAB 2 -->
+
+      <div class="event-content" id="info-pack">
+
+        <div class="event-card">
+
+          <div class="event-image">
+
+            <img src="assets/ACA Winner 2.JPG" alt="Info Pack Download">
+
+          </div>
+
+          <div class="event-info">
+
+            <span class="event-tag">
+              Info Pack Download
+            </span>
+
+            <h3>
+              Main Event Announcements & Details
+            </h3>
+
+            <div class="event-meta">
+
+              <div class="meta-box">
+                <small>Status</small>
+                <strong>Coming Soon</strong>
+              </div>
+
+              <div class="meta-box">
+                <small>Includes</small>
+                <strong>Announcements, schedule, access, and venue details</strong>
+              </div>
+
+              <div class="meta-box">
+                <small>Format</small>
+                <strong>Download Pack</strong>
+              </div>
+
+            </div>
+
+            <p class="event-description">
+              Use this section to publish the official main event info pack with announcements and everything attendees need to know.
+            </p>
+
+            <a href="#" class="btn btn-primary">
+              Download Info Pack
             </a>
 
           </div>

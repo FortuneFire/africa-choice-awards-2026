@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const step2 = document.getElementById("step-2");
 
   const submitButton = form.querySelector('button[type="submit"]');
+  const tabButtons = document.querySelectorAll(".tab-btn");
+  const eventContents = document.querySelectorAll(".event-content");
 
   const ZAPIER_WEBHOOK =
     "https://hooks.zapier.com/hooks/catch/23918850/4b3mg3w/";
@@ -21,6 +23,26 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("Form not found");
     return;
   }
+
+  function activateEventTab(tabName) {
+    tabButtons.forEach((button) => {
+      const isActive = button.dataset.tab === tabName;
+      button.classList.toggle("active", isActive);
+      button.setAttribute("aria-selected", String(isActive));
+    });
+
+    eventContents.forEach((content) => {
+      content.classList.toggle("active", content.id === tabName);
+    });
+  }
+
+  tabButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const tabName = button.dataset.tab;
+      if (!tabName) return;
+      activateEventTab(tabName);
+    });
+  });
 
   /* =========================
      MULTI STEP FORM
